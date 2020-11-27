@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flickity</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    
+    <!-- JavaScript and Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-carousel{
+            z-index: 2;
+            top: 50px;
+        }
+
+        h1{
+            margin-bottom: 30px;
+        }
+
+        .carousel-cell{
+            width:100%;
+            text-align: center;
+        }
+
+        .wave-animation{
+            position: absolute;
+            height: 70vh;
+            width: 100%;
+            background: #542B1E;
+            overflow: hidden;
+            top:150px;
+            z-index: 1;
+        }
+
+        .wave1{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            transform: rotate(180deg);
+            background: url(wave.png);
+            background-size: 1000px 100px;
+            z-index: 1000;
+            opacity: 1;
+            animation-delay:0s ;
+        }
+
+        .anima1{
+            animation: animate1 1.2s linear;
+        }
+        .anima2{
+            animation: animate2 1.2s linear;
+        }
+        .anima3{
+            animation: animate3 1.2s linear;
+        }
+        .anima4{
+            animation: animate4 1.2s linear;
+        }
+
+        @keyframes animate1{
+            0%{
+                background-position-x: 0;
+            }
+
+            100%{
+                background-position-x: 1000px;
+            }
+        }
+        @keyframes animate2{
+            0%{
+                background-position-x: 0;
+            }
+
+            100%{
+                background-position-x: 1000px;
+            }
+        }
+        @keyframes animate3{
+            0%{
+                background-position-x: 0;
+            }
+
+            100%{
+                background-position-x: 1000px;
+            }
+        }
+        @keyframes animate4{
+            0%{
+                background-position-x: 0;
+            }
+
+            100%{
+                background-position-x: 1000px;
+            }
+        }
+
+        img{
+            width: 200px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main-carousel">
+        <div class="carousel-cell"><h1>Flickity is Babe</h1>
+        <img src="https://res.cloudinary.com/take-two/image/upload/h_640,dpr_2.0,q_auto,f_auto//v1598021169/take-two-chocolate-40oz-20200724-a_orsfv3.png" alt="">
+        </div>
+        <div class="carousel-cell"><h1>Flickity is Babe</h1>
+        <img src="https://res.cloudinary.com/take-two/image/upload/h_640,dpr_2.0,q_auto,f_auto//v1598021057/take-two-vanilla-40oz-20200724-a_u351xh.png" alt="">
+        </div>
+        <div class="carousel-cell"><h1>Flickity is Babe</h1>
+            <img src="https://res.cloudinary.com/take-two/image/upload/h_640,dpr_2.0,q_auto,f_auto//v1598020315/take-two-original-40oz-20200724-a_emmj5a.png" alt="">
+        </div>
+        <div class="carousel-cell"><h1>Flickity is Babe</h1>
+        <img src="https://res.cloudinary.com/take-two/image/upload/h_640,dpr_2.0,q_auto,f_auto//v1598020836/take-two-chefsblend-40oz-20200724-a_a16fjz.png" alt="">
+        </div>
+    </div>
+
+    <section class="wave-animation">
+        <div class="wave1 anima1"></div>
+    </section>
+
+
+
+<script>
+    $('.main-carousel').flickity({
+        autoPlay: true,
+        autoPlay: 1500,
+        wrapAround: true,
+        on: {
+            change: function( index ) {
+            console.log( 'Slide changed to ' + index );
+
+            $('.wave1').removeClass("anima1");
+            $('.wave1').removeClass("anima2");
+            $('.wave1').removeClass("anima3");
+            $('.wave1').removeClass("anima4");
+           
+
+            if(index == 0)
+            {
+                $('.wave-animation').css('background','#542B1E');
+                $('.wave1').addClass("anima1");
+                // $('.wave1').animate({backgroundPositionX:0,backgroundPositionX:1000+'px'});
+            }
+
+            else if(index == 1)
+            {
+                
+                $('.wave-animation').css('background','#194144');
+                $('.wave1').removeClass("anima1")
+                $('.wave1').addClass("anima2");
+            }
+
+            else if(index == 2)
+            {
+                $('.wave-animation').css('background','#1C3F33');
+                $('.wave1').removeClass("anima2")
+                $('.wave1').addClass("anima3");
+
+                //  $('.wave1').animate({backgroundPositionX:0,backgroundPositionX:1000+'px'});
+                // $('.wave1').css('animation','animate 1s');
+            }
+
+           else if(index == 3)
+            {
+                $('.wave-animation').css('background','#2D302E');
+                $('.wave1').removeClass("anima3")
+                $('.wave1').addClass("anima4");
+
+                //  $('.wave1').animate({backgroundPositionX:0,backgroundPositionX:1000+'px'});
+                // $('.wave1').css('animation','animate 1s');
+            }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
